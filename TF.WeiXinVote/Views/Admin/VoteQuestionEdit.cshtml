@@ -1,0 +1,74 @@
+﻿@model TF.WeiXinVote.Data.VoteQuestions
+@{
+    Layout = "~/Views/Shared/_AdminLTE.cshtml";
+    ViewBag.Title = "编辑问题";
+    var persons = ViewData["persons"] as List<TF.WeiXinVote.Data.VotePersons>;
+}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">编辑问题</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="title">关联人物</label>
+                            <select class="form-control" id="person">
+                                @foreach (var person in persons)
+                                {
+                                    <option value="@person.RealName">@person.NO @person.RealName</option>
+                                }
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">题目</label>
+                            <input type="text" class="form-control" id="questiontitle" placeholder="" value="@Model.QuestionTitle">
+                        </div>
+                        <div class="form-group">
+                            <label for="title">可选答案(一行一个)</label>
+                            <textarea class="form-control" rows="3" placeholder="" id="questionanswers">@Model.QuestionAnswers</textarea>
+                        </div>
+                        <div>
+                            <label for="title">正确答案</label>
+                            <select class="form-control" id="questioncorrect"><option value="1">A</option><option value="2">B</option><option value="3">C</option></select>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-primary" onclick="dosubmit();">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@section Footer{
+<script>
+    $("#person").val("@Model.Person");
+    $("#questioncorrect").val("@Model.QuestionCorrect");
+
+    function dosubmit() {
+        var person = $("#person").val();
+        var questiontitle = $("#questiontitle").val();
+        var questionanswers = $("#questionanswers").val();
+        var questioncorrect = $("#questioncorrect").val();
+        layer.load(2);
+        $.post("@Url.Action("VoteQuestionAdd")", {id:@Model.ID, person: person, questiontitle: questiontitle, questionanswers: questionanswers, questioncorrect: questioncorrect }, function (data) {
+            layer.closeAll();
+            if (data.errCode == 0) {
+                location.href = "@Url.Action("Questions")";
+            } else {
+                layer.alert(data.errMsg, { icon: 5 })
+            }
+
+        },'json');
+    }
+
+</script>
+
+}
+    

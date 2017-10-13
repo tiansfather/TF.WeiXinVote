@@ -1,0 +1,19 @@
+﻿@{
+    var user = Session["user"] as TF.WeiXinVote.Data.DbUser;
+}
+<ul class="sidebar-menu">
+        <li class="header">投票管理</li>  
+        @*<li>
+            <a href="pages/widgets.html">
+                <i class="fa fa-th"></i> <span>Widgets</span>
+                <span class="pull-right-container">
+                    <small class="label pull-right bg-green">new</small>
+                </span>
+            </a>
+        </li>*@
+        <li><a href="@Url.Action("VotePerson","Admin")"><i class="fa fa-book"></i> <span>被投票人信息</span></a></li>
+        <li><a href="@Url.Action("Questions","Admin")"><i class="fa fa-book"></i> <span>问答管理</span></a></li>
+        <li><a href="@Url.Action("VoteBonus","Admin")"><i class="fa fa-book"></i> <span>奖品管理</span></a></li>
+        <li><a href="@Url.Action("BonusRecord","Admin")"><i class="fa fa-book"></i> <span>中奖信息</span></a></li>
+        <li><a href="@Url.Action("VotePage","Admin")"><i class="fa fa-book"></i> <span>页面管理</span></a></li>
+</ul>

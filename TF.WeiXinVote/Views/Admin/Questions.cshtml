@@ -1,0 +1,75 @@
+﻿@model List<TF.WeiXinVote.Data.VoteQuestions>
+@{
+    Layout = "~/Views/Shared/_AdminLTE.cshtml";
+    ViewBag.Title = "问答管理";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">问答管理</h3>
+
+                <div class="box-tools">
+
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>关联人物</th>
+                        <th>问题</th>
+                        <th>操作</th>
+                    </tr>
+                    @{
+                        var i = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@item.Person</td>
+                            <td>@item.QuestionTitle</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm" onclick="location.href='@Url.Action("VoteQuestionEdit", new {id=item.ID })'">
+                                    <i class="fa fa-user"></i> 编辑
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" onclick="del(@item.ID)">
+                                    <i class="fa fa-close"></i> 删除
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <button type="button" class="btn btn-success pull-left" onclick="location.href='@Url.Action("VoteQuestionAdd")'">
+                    <i class="fa fa-commenting"></i> 添加
+                </button>
+
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+@section Footer{
+
+    <script>
+    $(function () {
+
+    })
+    function del(id) {
+        layer.confirm('确认删除此项？', {
+            btn: ['确认', '取消'] //按钮
+        }, function () {
+            $.post("@Url.Action("VoteQuestionDel")", { id: id }, function (data) {
+                location.reload();
+            })
+        }, function () {
+
+        });
+    }
+    </script>
+}

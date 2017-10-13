@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLTE.cshtml";
+    ViewBag.Title = "添加奖品";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">添加奖品</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="title">奖品内容</label>
+                        <input type="text" class="form-control" id="title" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">每日限量</label>
+                        <input type="text" class="form-control" id="number" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">兑换地址</label>
+                        <input type="text" class="form-control" id="location" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">中奖说明</label>
+                        <textarea class="form-control" rows="3" placeholder="" id="bonustip"></textarea>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary" onclick="dosubmit();">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Footer{
+
+<script>
+
+
+    function dosubmit() {
+        var title = $("#title").val();
+        var location = $("#location").val();
+        var bonustip = $("#bonustip").val();
+        var number = $("#number").val();
+        layer.load(2);
+        $.post("@Url.Action("VoteBonusAdd")", { title: title, location: location, bonustip: bonustip, number: number }, function (data) {
+            layer.closeAll();
+            if (data.errCode == 0) {
+                goto("@Url.Action("VoteBonus")");
+            } else {
+                layer.alert(data.errMsg, { icon: 5 })
+            }
+
+        }, 'json');
+    }
+    function goto(url) {
+        location.href = url;
+    }
+</script>
+}

@@ -1,0 +1,134 @@
+*{
+	margin:0;
+	padding:0;
+}
+a{
+	text-decoration:none;
+}
+li{
+	list-style:none;
+}
+body{
+	background-color:#ebebed;
+}
+.header{
+	padding:10px 15px;
+	background-color:white;
+	overflow:hidden;
+}
+.header .img1{
+	width:34px;
+	float:left;
+}
+.header .test{
+	float:left;
+	margin-left:15px;
+	width:82%;
+}
+.header .test b{
+	display:block;
+	font-size:14px;
+	font-family:"微软雅黑";
+	line-height:22px;
+	color:#000;
+}
+.header .test span{
+	display:block;
+	font-size:14px;
+	font-family:"微软雅黑";
+	line-height:22px;
+	font-weight:normal;
+	color:#000;
+}
+
+.header1{
+	background-color:#4ab4de;
+	z-index:999;
+	width:100%;
+	position:fixed;
+	top:0px;
+	_position:relative;
+	_top: expression_r(documentElement.scrollTop + "px");
+	overflow:hidden;
+}
+.header1 span{
+	display:block;
+	text-align:center;
+	line-height:44px;
+	color:white;
+	font-size:16px;
+	font-family:'Hiragino Sans GB W3';
+}
+
+.main{
+	padding:0 2%;
+}
+.main .box{
+	background-color:white;
+	border-radius:3px;
+	-o-border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border:1px solid #e1e1e1;
+	margin-top:8px;
+}
+.main .top{
+	overflow:hidden;
+	padding:10px 0;
+	margin:0 5px;
+	border-bottom:1px solid #e1e1e1;
+}
+.main .box .pic{
+	width:99px;
+	height:72px;
+	float:left;
+	display:block;
+}
+.main .box .Topright{
+	float:left;
+	width:62%;
+	margin-left:10px;
+}
+.main .box .Topright b{
+	display:block;
+	font-size:14px;
+	font-family:"微软雅黑";
+	color:#000;
+	line-height:22px;
+}
+.main .box .D{
+	overflow:hidden;
+}
+.main .box .D .img2{
+	float:left;
+	width:25px;
+	margin-left:10px;
+	padding:3px 0;
+}
+.main .box .D b{
+	float:left;
+	font-size:14px;
+	font-family:"微软雅黑";
+	line-height:32px;
+	font-weight:bold;
+	color:#000;
+}
+.main .box .D span{
+	float:left;
+	font-size:16px;
+	font-family:"微软雅黑";
+	line-height:32px;
+	font-weight:bold;
+	color:#209900;
+	margin-left:5px;
+}
+.main .box .phone{
+	padding:5px 0;
+}
+.main .box .phone span{
+	font-size:14px;
+	font-family:"微软雅黑";
+	line-height:30px;
+	color:#0169a8;
+	margin-left:15px;
+}

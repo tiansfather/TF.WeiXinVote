@@ -1,0 +1,99 @@
+.rDialog {
+     position: fixed;
+    _position: absolute;
+    margin:0 auto;
+    text-align:center; 
+   width:70%;
+
+}
+.rDialog-wrap {
+    position: relative;
+    background:#faf9f9;
+
+    border-radius: 10px;
+	-moz-border-radius:10px;
+	-o-border-radius: 10px;
+	-webkit-border-radius: 10px;
+
+}
+.rDialog-header-load {
+	text-align: center;
+	background: url("../images/alert-loading.gif");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 100%;
+	width: 60%;
+	height: 53px;
+	margin: auto;
+}
+.rDialog-header-alert,.rDialog-header-ok {
+	text-align: center;
+	background: url("../images/alert-icons.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 60%;
+	height: 23px;
+	margin: auto;
+}
+.rDialog-header-alert{
+	background-position: 0 -53px;
+}
+.rDialog-header-ok {
+	background-position: 0 0;
+}
+.rDialog-content {
+   /* padding: 1em 1em;*/
+    font-size: 1em;
+    color: #000;
+    overflow: hidden;
+    text-align: center; 
+    padding-top:1.2em;
+    height:130px;
+
+    /* border-bottom:0.04em solid #b5b5b5;*/
+}
+
+.rDialog-footer {
+    text-align: center;
+
+}
+
+ /*.rDialog-footer a {
+    display: inline-block;
+    margin: 0 15px 15px 0;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 30px;
+    font-size: 0.8em;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+     background:#2962ed;
+    font-size: 1.1em;
+    padding-top:0.5em;
+}*/
+ /*.rDialog-footer a: link, .rDialog-footer a: visited, .rDialog-footer a: hover {
+    color: #fff;
+
+}*/
+.rDialog-ok,.rDialog-ok:hover 
+{
+     /*background:#2962ed;*/
+      color: #2962ed;
+    font-size: 1em;
+}
+.rDialog-cancel,.rDialog-cancel:hover  {
+    background: #E6E6E6;
+    color: #A7A7A7;
+}
+.rDialog-mask {
+    position: fixed;
+    _position: absolute;
+   /*  left: 0;*/
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    filter: alpha(opacity=70);
+    opacity: .7;
+}

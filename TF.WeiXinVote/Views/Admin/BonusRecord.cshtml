@@ -1,0 +1,66 @@
+﻿@model SoMain.Common.Page<TF.WeiXinVote.Data.VoteBonusRecord>
+@{
+    Layout = "~/Views/Shared/_AdminLTE.cshtml";
+    ViewBag.Title = "中奖信息";
+    var url = Url.Action("BonusRecord") + "?page={0}";
+    var pagemodel = new TF.PageModel()
+    {
+        Url = url,
+        CurrentPage = Model.CurrentPage,
+        TotalPage = Model.TotalPages
+    };
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">中奖信息</h3>
+
+                <div class="box-tools">
+                    <form action="?">                        
+                        <div class="input-group " style="width: 200px;">
+                            <input type="text" name="mobile" class="form-control pull-right" placeholder="手机号" value="">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default" ><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>姓名</th>
+                        <th>手机</th>
+                        <th>奖品</th>
+                        <th>中奖日期</th>
+                        <th>状态</th>
+                    </tr>
+                    @{
+                        var i = 0;
+                    }
+                    @foreach (var item in Model.Items)
+                    {
+                        i++;
+                        var bonus = TF.WeiXinVote.Data.SqlFactory.GetSqlhelper().SingleById<TF.WeiXinVote.Data.VoteBonus>(item.BonusID);
+                        <tr>
+                            <td>@item.RealName</td>
+                            <td>@item.Mobile</td>
+                            <td>@bonus.Title</td>
+                            <td>@item.CreateTime</td>
+                            <td>@Html.Raw(item.UseDate==null?"<font color='green'>未兑换</font>":"<font color='red'>已兑换<font>")</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                @Html.Partial("_pagination", pagemodel)
+
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
