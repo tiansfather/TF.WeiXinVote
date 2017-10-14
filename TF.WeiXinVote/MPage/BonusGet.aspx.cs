@@ -59,7 +59,7 @@
             this.record = this.GetBonus(this.Session["openid"].ToString(), out this.bonus);
             if (record == null)
             {
-                base.Response.Redirect("Info.aspx?info=谢谢参与，今天奖品已经发放结束，请明天赶早投票");
+                base.Response.Redirect("Info.aspx?info=今天奖品已经发放结束，敬请明天早点参与");
             }else if (record.Bonus.Title == "现金红包")
             {
                 base.Response.Redirect("RedPack.aspx?code="+record.AddInfo);

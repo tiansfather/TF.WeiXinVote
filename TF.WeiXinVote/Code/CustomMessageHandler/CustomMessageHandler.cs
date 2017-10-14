@@ -99,6 +99,25 @@ namespace Senparc.Weixin.MP.Sample.CommonService.CustomMessageHandler
         {
         }
 
+        public ResponseMessageNews GetBonusUrlResponse(string openid)
+        {
+            ResponseMessageNews news = base.CreateResponseMessage<ResponseMessageNews>();
+            Article item = new Article
+            {
+                Title = "核销后台",
+                Description = "核销后台",
+                Url = string.Concat(new object[] {
+                    this.voteinfo.HostUrl,
+                    "/Use/Index?voteid=",
+                    this.voteinfo.ID,
+                    "&openid=",
+                    openid
+                })
+            };
+            news.Articles.Add(item);
+            return news;
+        }
+
         public ResponseMessageNews GetVoteUrlResponse(string openid)
         {
             ResponseMessageNews news = base.CreateResponseMessage<ResponseMessageNews>();
@@ -154,6 +173,9 @@ namespace Senparc.Weixin.MP.Sample.CommonService.CustomMessageHandler
             if (requestMessage.Content == "投票")
             {
                 return this.GetVoteUrlResponse(fromUserName);
+            }else if (requestMessage.Content == "核销")
+            {
+                return this.GetBonusUrlResponse(fromUserName);
             }
             else
             {

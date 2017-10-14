@@ -6,6 +6,7 @@
     using System.Web.Mvc;
     using TF.WeiXinVote.Data;
     using TF.WeiXinVote.MPage.Code;
+    using System.Linq;
 
     public class UseController : Controller
     {
@@ -14,7 +15,7 @@
             List<VoteBonusRecord> model = new List<VoteBonusRecord>();
             if (!string.IsNullOrEmpty(mobile))
             {
-                model = SqlFactory.GetSqlhelper().CreateWhere<VoteBonusRecord>().Where(o => o.UseDate == null).Where(o => o.Mobile == mobile).Select();
+                model = SqlFactory.GetSqlhelper().CreateWhere<VoteBonusRecord>().Where(o => o.UseDate == null).Where(o => o.Mobile == mobile).Select().Where(o=>o.Bonus.Title!="现金红包").ToList();
             }
             return base.View(model);
         }
