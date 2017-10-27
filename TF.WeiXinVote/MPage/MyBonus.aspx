@@ -16,11 +16,15 @@
           
               <div class="weui-form-preview">
   <div class="weui-form-preview__hd">
-    <label class="weui-form-preview__label"><%#Eval("Bonus.Title") %></label>
-    <em class="weui-form-preview__value"><%#Eval("usedate")==null?"<font color='red'>未兑换</font>":"<font color='green'>已兑换</font>" %></em>
+    <label class="weui-form-preview__label" style="line-height: 1.3em;text-align-last: left;"><%#Eval("Bonus.Title") %></label>
+    <em class="weui-form-preview__value">&nbsp;</em>
   </div>
   <div class="weui-form-preview__bd">
       
+      <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">状态</label>
+      <span class="weui-form-preview__value" style="font-weight:bold;font-size:16px;"><%#Eval("usedate")==null?"<font color='red'>未兑换</font>":"<font color='green'>已兑换</font>" %></span>
+    </div>
     <div class="weui-form-preview__item">
       <label class="weui-form-preview__label">姓名</label>
       <span class="weui-form-preview__value"><%#Eval("realname") %></span>
@@ -33,11 +37,16 @@
       <label class="weui-form-preview__label">中奖日期</label>
       <span class="weui-form-preview__value"><%#Convert.ToDateTime( Eval("createtime")).ToString("yyyy-MM-dd") %></span>
     </div>
+      <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">奖品说明</label>
+      <span class="weui-form-preview__value"><%#Eval("Bonus.BonusTip") %></span>
+    </div>
       <asp:PlaceHolder runat="server" ID="PH_Bonus">
           <div class="weui-form-preview__item">
       <label class="weui-form-preview__label">领奖地址</label>
       <span class="weui-form-preview__value"><%#Eval("Bonus.Location") %></span>
     </div>
+          
       </asp:PlaceHolder>
     
       <asp:PlaceHolder runat="server" ID="PH_RedPack">

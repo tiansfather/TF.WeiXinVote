@@ -83,7 +83,7 @@ namespace TF.WeiXinVote.Controllers
             string paySign;//签名
             var sendNormalRedPackResult = RedPackApi.SendNormalRedPack(
                 appId, mchId, key,
-                @"D:\certjsq\apiclient_cert.p12",     //证书物理地址
+                @"c:\certjsq\apiclient_cert.p12",     //证书物理地址
                 openid,   //接受收红包的用户的openId
                 "新路桥人家园",             //红包发送者名称
                 Request.UserHostAddress,      //IP
