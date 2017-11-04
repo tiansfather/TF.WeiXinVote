@@ -66,7 +66,8 @@
 <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
     <script>
         function reject() {
-            $.confirm({
+            location.href = "index.aspx?voteid=<%=voteinfo.ID%>";
+            <%--$.confirm({
                 title: '确认放弃',
                 text: '确认放弃问答机会？回答正确百分百有奖哦',
                 onOK: function () {
@@ -75,7 +76,7 @@
                 },
                 onCancel: function () {
                 }
-            });
+            });--%>
         }
 
         function view(person) {

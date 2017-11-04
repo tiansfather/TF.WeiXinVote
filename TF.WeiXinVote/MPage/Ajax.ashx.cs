@@ -150,8 +150,13 @@
                         }
                         result.ErrCode = 0;
                         result.Message = "提交成功";
-                        result.Tag = "enable";
-                        HttpContext.Current.Session["BonusEnable"] = "1";
+                        //判断每人的中奖次数
+                        if (Fun.HasBonus(session))
+                        {
+                            result.Tag = "enable";
+                            HttpContext.Current.Session["BonusEnable"] = "1";
+                        }
+                        
                     }
                 }
             }

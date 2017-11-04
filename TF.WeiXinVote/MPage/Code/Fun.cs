@@ -65,6 +65,33 @@
                 }
             }
         }
+        /// <summary>
+        /// 当前用户是否还能中奖
+        /// </summary>
+        /// <param name="openid"></param>
+        /// <param name="voteid"></param>
+        /// <returns></returns>
+        public static Boolean HasBonus(string openid)
+        {
+            var result = true;
+            try
+            {
+                var bonusperman =int.Parse( System.Configuration.ConfigurationManager.AppSettings["bonusperman"]);
+                var bonusget = SqlFactory.GetSqlhelper().CreateWhere<VoteBonusRecord>()
+                    .Where(o => o.OpenId == openid)
+                    .Select().Count;
+
+                if(bonusperman>0 && bonusperman <= bonusget)
+                {
+                    result = false;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
     }
 }
 
